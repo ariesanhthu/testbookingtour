@@ -80,7 +80,7 @@ const OrdersPage = () => {
 
   // Render order cards
   const renderOrders = (orderList: Order[]) => (
-    <div className="flex">
+    <div className="flex my-5">
       <Table className="w-full border items-center justify-center">
         <TableCaption>Danh sách đơn hàng</TableCaption>
         <TableHeader>
@@ -99,12 +99,13 @@ const OrdersPage = () => {
         <TableBody>
           {orderList.map((order) => (
             <TableRow key={order._id}>
-              <TableCell className='w-[7rem]'>{order.tourName}</TableCell>
-              <TableCell className='w-[13rem]'>{new Date(order.createdAt).toLocaleString()}</TableCell>
-              <TableCell className='w-[13rem]'>{order.name}</TableCell>
-              <TableCell className='w-[10rem]'>{order.phone}</TableCell>
-              <TableCell className='w-[10rem]'>{order.email}</TableCell>
-              <TableCell className='w-[20rem]'>{order.request}</TableCell>
+              
+              <TableCell>{order.tourName}</TableCell>
+              <TableCell>{new Date(order.createdAt).toLocaleString()}</TableCell>
+              <TableCell>{order.name}</TableCell>
+              <TableCell>{order.phone}</TableCell>
+              <TableCell>{order.email}</TableCell>
+              <TableCell>{order.request}</TableCell>
               <TableCell>
                 <Button variant="outline" size="sm" onClick={() => handleArchive(order._id)}>
                   <Archive className="w-4 h-4 mr-2" /> {!order.archived ? 'Lưu trữ' : 'Bỏ lưu trữ'}
@@ -123,7 +124,7 @@ const OrdersPage = () => {
   );
 
   return (
-    <div className="p-6 justify-center h-full w-full">
+    <div className="my-10 p-6 justify-center h-full w-full">
       <Tabs defaultValue="orders" className='h-full w-full'>
         <TabsList>
           <TabsTrigger value="orders">Đơn hàng</TabsTrigger>

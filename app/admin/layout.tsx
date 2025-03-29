@@ -12,13 +12,14 @@ import RootLayout from "../layout";
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   return (
-    <SidebarProvider> 
-        <AdminSideBar />
-        <main>
+    // <main>
+      
+    //   {children}
+    // </main>
+    <SidebarProvider className="flex mx-auto"> 
+          <AdminSideBar />
           <SidebarTrigger className="fixed bg-primary"/>
-          {/* {children} */}
           <EdgeStoreProvider>{children}</EdgeStoreProvider>
-        </main>
     </SidebarProvider>
   );
 }

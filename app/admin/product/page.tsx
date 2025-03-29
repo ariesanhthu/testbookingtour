@@ -698,7 +698,7 @@ const addTourStop = (product: BaseProduct | typeof newProduct) => {
     </form>
   );
     return (
-  <div className="p-6 justify-center h-full w-full">
+  <div className="my-10 p-6 justify-center h-full w-full">
     <Tabs defaultValue="product" className='h-full w-full'>
       <TabsList>
         <TabsTrigger value="create">Tạo tour</TabsTrigger>
@@ -728,7 +728,7 @@ const addTourStop = (product: BaseProduct | typeof newProduct) => {
       
       {/* Tab dành cho danh sách tour */}
       <TabsContent value="list">
-        <Table className='border'>
+        <Table className='border my-10 rounded-2xl w-full'>
           <TableHeader>
             <TableRow>
               <TableHead>Tên sản phẩm</TableHead>

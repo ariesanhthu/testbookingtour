@@ -3,6 +3,8 @@ import { checkRole } from '@/utils/roles'
 import { SearchUsers } from './SearchUsers'
 import { clerkClient } from '@clerk/nextjs/server'
 import { removeRole, setRole } from './_actions'
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Button } from "@/components/ui/button";
 
 export default async function AdminDashboard(params: {
   searchParams: Promise<{ search?: string }>
@@ -18,46 +20,48 @@ export default async function AdminDashboard(params: {
   const users = query ? (await client.users.getUserList({ query })).data : []
 
   return (
-    <>
-      <p>This is the protected admin dashboard restricted to users with the `admin` role.</p>
+    <div className="flex flex-col justify-center items-center p-5 mx-auto">
+      <p className="my-10 text-lg font-extrabold">This is the protected admin dashboard restricted to users with the `admin` role.</p>
 
       <SearchUsers />
-
-      {users.map((user) => {
-        return (
-          <div key={user.id}>
-            <div>
-              {user.firstName} {user.lastName}
-            </div>
-
-            <div>
-              {
-                user.emailAddresses.find((email) => email.id === user.primaryEmailAddressId)
-                  ?.emailAddress
-              }
-            </div>
-
-            <div>{user.publicMetadata.role as string}</div>
-
-            <form action={setRole}>
-              <input type="hidden" value={user.id} name="id" />
-              <input type="hidden" value="admin" name="role" />
-              <button type="submit">Make Admin</button>
-            </form>
-
-            <form action={setRole}>
-              <input type="hidden" value={user.id} name="id" />
-              <input type="hidden" value="moderator" name="role" />
-              <button type="submit">Make Moderator</button>
-            </form>
-
-            <form action={removeRole}>
-              <input type="hidden" value={user.id} name="id" />
-              <button type="submit">Remove Role</button>
-            </form>
-          </div>
-        )
-      })}
-    </>
+      
+      <Table className="mt-10">
+        <TableHeader>
+          <TableRow>
+            <TableHead>Tên</TableHead>
+            <TableHead>Email</TableHead>
+            <TableHead>Vai trò</TableHead>
+            <TableHead>Hành động</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {users.map((user) => (
+            <TableRow key={user.id}>
+              <TableCell>{user.firstName} {user.lastName}</TableCell>
+              <TableCell>
+                {user.emailAddresses.find((email) => email.id === user.primaryEmailAddressId)?.emailAddress}
+              </TableCell>
+              <TableCell>{user.publicMetadata.role as string}</TableCell>
+              <TableCell className="flex gap-2">
+                <form action={setRole}>
+                  <input type="hidden" name="id" value={user.id} />
+                  <input type="hidden" name="role" value="admin" />
+                  <Button variant="outline" size="sm">Admin</Button>
+                </form>
+                <form action={setRole}>
+                  <input type="hidden" name="id" value={user.id} />
+                  <input type="hidden" name="role" value="moderator" />
+                  <Button variant="outline" size="sm">Moderator</Button>
+                </form>
+                <form action={removeRole}>
+                  <input type="hidden" name="id" value={user.id} />
+                  <Button variant="destructive" size="sm">Xóa</Button>
+                </form>
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </div>
   )
 }

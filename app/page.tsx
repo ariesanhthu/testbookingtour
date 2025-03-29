@@ -11,7 +11,31 @@ import Tab from "./components/Tab";
 import ProductList from "./components/ProductList";
 import seedData from "@/app/lib/seedData";
 import tourDatas from "./lib/tourData";
+import { ChevronLeft, ChevronRight, Star, Quote } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import Testimonial from "./components/testimonials/Testimonials"
 // export const dynamic = "force-dynamic";
+
+const testimonials = [
+  {
+    name: "John Doe",
+    avatar: "/avatar1.jpg",
+    review: "Amazing experience! The team was so professional and helpful. I will definitely come back!",
+    rating: 5,
+  },
+  {
+    name: "Jane Smith",
+    avatar: "/avatar2.jpg",
+    review: "Great service and friendly staff. I highly recommend this to everyone!",
+    rating: 4,
+  },
+  {
+    name: "Michael Brown",
+    avatar: "/avatar3.jpg",
+    review: "Absolutely fantastic! They exceeded all my expectations.",
+    rating: 5,
+  },
+];
 
 export default function Home() {
   const [categories, setCategories] = useState<categoryProps[]>([]);
@@ -103,6 +127,16 @@ export default function Home() {
     }
   }, [selectedCategory]);
 
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+  };
+  
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  };
+
   return (
     <div className="w-full h-full">
       <ImageSlider images={homePageData.images} />
@@ -125,8 +159,19 @@ export default function Home() {
 
       </div>
 
-      <Contactform />
       <RegionTour />
+      <Testimonial/>
+      <Contactform />
     </div>
   );
 }
+
+
+
+
+
+
+
+
+
+

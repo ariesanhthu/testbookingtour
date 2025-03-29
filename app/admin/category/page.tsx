@@ -49,6 +49,7 @@ export default function AdminCategoryPage() {
       const data = await res.json();
       if (data.success) {
         setCategories(data.data || []);
+      
         setStatus(null);
       } else {
         setStatus('Failed to fetch categories');
@@ -125,11 +126,12 @@ export default function AdminCategoryPage() {
   };
 
   return (
-    <div className="flex flex-col gap-10 p-6 justify-center w-screen">
+    <div className="my-10 flex flex-col justify-center items-center mx-auto">
+      <h1 className='title'>Quản lý danh mục</h1>
       {/* Status Message */}
       {status && <p className="text-red-500">{status}</p>}
-
-      <Card className="w-full m-10">
+      <div className="flex flex-col lg:flex-row gap-10 p-10 mx-auto justify-center">
+      <Card className="min-w-[30rem]">
         <CardHeader>
           <CardTitle>{editingCategory ? 'Chỉnh sửa danh mục sản phẩm' : 'Thêm danh mục sản phẩm'}</CardTitle>
         </CardHeader>
@@ -166,7 +168,7 @@ export default function AdminCategoryPage() {
         </form>
       </Card>
 
-      <Table className="w-full border items-center justify-center m-10">
+      <Table className="w-full border">
         <TableCaption>Danh sách category</TableCaption>
         <TableHeader>
             <TableRow>
@@ -196,7 +198,7 @@ export default function AdminCategoryPage() {
             ))}
         </TableBody>
       </Table>
-
+      </div>
 
       {/* Edit Dialog */}
       <Dialog open={isEditDialogOpen} onOpenChange={setIsEditDialogOpen}>

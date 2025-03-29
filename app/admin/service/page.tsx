@@ -119,10 +119,10 @@ export default function ServicePage() {
   };
 
   return (
-<div className="m-10">
-      <h1>Quản lý dịch vụ</h1>
-      <div className="flex flex-row gap-10 p-10 mx-20 justify-center">
-        <Card className="flex-1 min-w-[30rem]">
+    <div className="my-10 flex flex-col justify-center items-center mx-auto">
+      <h1 className="title">Quản lý dịch vụ</h1>
+      <div className="flex flex-col lg:flex-row gap-10 p-10 mx-auto justify-center">
+        <Card className="min-w-[30rem]">
           {status && <p style={{ color: 'red'}}>{status}</p>}
           <CardHeader>
             <CardTitle>{editserviceId ? 'Chỉnh sửa dịch vụ' : 'Thêm dịch vụ'}</CardTitle>
@@ -164,7 +164,7 @@ export default function ServicePage() {
           </form>
         </Card>
         {/* Role List */}
-        <Table className="flex-1 w-full border rounded-md">
+        <Table className="w-full border rounded-md">
           <TableCaption>Danh sách dịch vụ</TableCaption>
           <TableHeader>
             <TableRow>

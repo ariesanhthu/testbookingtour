@@ -117,50 +117,10 @@ export default function RolePage() {
   };
 
   return (
-    // <div>
-    //   <h1>tag Management</h1>
-
-    //   {/* Status Message */}
-    //   {status && <p style={{ color: 'red'}}>{status}</p>}
-
-    //   {/* Form for Create/Update */}
-    //   <div>
-    //     <input
-    //       type="text"
-    //       placeholder="Tag name"
-    //       value={name}
-    //       onChange={(e) => setTagname(e.target.value)}
-    //     />
-    //     <input
-    //       type="text"
-    //       placeholder="Description"
-    //       value={description}
-    //       onChange={(e) => setDescription(e.target.value)}
-    //     /> 
-    //     <button onClick={handleCreateOrUpdate}>
-    //       {editTagname ? 'Update tag' : 'Create tag'}
-    //     </button>
-    //     {editTagname && <button onClick={resetForm}>Cancel</button>}
-    //   </div>
-
-    //   {/* Tag List */}
-    //   <ul>
-    //     {Tags.map((tag: any) => (
-    //       <li key={tag._id}>
-    //         <strong>Name:  {tag.name}</strong>
-    //         <strong>Description:  {tag.description || "None"}</strong> 
-    //         {/* <button onClick={() => handleEdit(tag._id)}>Edit</button>  */}
-    //         <button onClick={() => handleDelete(tag._id)}>Delete</button>
-    //         <a href={`tag/${tag._id}`}>Edit</a>
-    //       </li>
-          
-    //     ))}
-    //   </ul>
-    // </div>
-    <div className="m-10">
-      <h1>Quản lý tag</h1>
-      <div className="flex flex-row gap-10 p-10 mx-20 justify-center">
-        <Card className="flex-1 min-w-[30rem]">
+    <div className="my-10 flex flex-col justify-center items-center mx-auto">
+      <h1 className='title'>Quản lý tag</h1>
+      <div className="flex flex-col lg:flex-row gap-10 p-10 mx-auto justify-center">
+        <Card className="min-w-[30rem]">
           {status && <p style={{ color: 'red'}}>{status}</p>}
           <CardHeader>
             <CardTitle>{editTagname ? 'Chỉnh sửa tag' : 'Thêm tag'}</CardTitle>
@@ -202,7 +162,7 @@ export default function RolePage() {
           </form>
         </Card>
         {/* Role List */}
-        <Table className="flex-1 w-full border rounded-md">
+        <Table className="w-full border rounded-md">
           <TableCaption>Danh sách tag</TableCaption>
           <TableHeader>
             <TableRow>

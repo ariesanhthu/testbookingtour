@@ -42,13 +42,14 @@ import {
   Home,
 } from "lucide-react";
 
+// {
+//     group: "Tổng Quan",
+//     items: [
+//       { name: "Bảng điều khiển", href: "home", icon: LayoutDashboard },
+//     ],
+//   },
+
 export const sidebarItems = [
-  {
-    group: "Tổng Quan",
-    items: [
-      { name: "Bảng điều khiển", href: "home", icon: LayoutDashboard },
-    ],
-  },
   {
     group: "Đơn hàng & Trang chủ",
     items: [
@@ -79,29 +80,8 @@ export function AdminSideBar() {
   
   const [open, setOpen] = useState(false);
   return (
-    // <Sidebar className="z-50 top-[70px]">
-    //   <SidebarTrigger />
-    //   <SidebarContent className="">
-    //     <SidebarGroup>
-    //       <SidebarGroupLabel>Management</SidebarGroupLabel>
-    //       <SidebarGroupContent>
-    //         <SidebarMenu>
-    //           {items.map((item) => (
-    //             <SidebarMenuItem key={item.name}>
-    //               <SidebarMenuButton asChild>
-    //                 <a href={item.href}>
-    //                   <span>{item.name}</span>
-    //                 </a>
-    //               </SidebarMenuButton>
-    //             </SidebarMenuItem>
-    //           ))}
-    //         </SidebarMenu>
-    //       </SidebarGroupContent>
-    //     </SidebarGroup>
-    //   </SidebarContent>
-    // </Sidebar>
-
     <Sidebar className="bg-slate-900 z-[1000]">
+      <SidebarTrigger className="fixed bg-primary"/>
     {/* Mobile Trigger */}
     {/* <SidebarTrigger onClick={() => setOpen(!open)} className="md:hidden p-2">
       <span className="sr-only">Toggle Menu</span>

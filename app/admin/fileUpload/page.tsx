@@ -92,7 +92,7 @@ export default function MultiImageDropzoneUsage() {
   
 
   return (
-    <div className='h-full w-full'>
+    <div className='my-10 h-full w-full'>
 
       <MultiImageDropzone
         value={fileStates}

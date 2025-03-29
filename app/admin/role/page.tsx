@@ -118,10 +118,10 @@ export default function RolePage() {
   };
 
   return (
-    <div className="m-10">
+    <div className="my-10 flex flex-col justify-center items-center mx-auto">
       <h1 className='title'>Quản lý vai trò</h1>
-      <div className="flex flex-row gap-10 p-10 mx-20 justify-center">
-        <Card className="flex-1 min-w-[30rem]">
+      <div className="flex flex-col lg:flex-row gap-10 p-10 mx-auto justify-center">
+        <Card className="min-w-[30rem]">
           {status && <p style={{ color: 'red'}}>{status}</p>}
           <CardHeader>
             <CardTitle>{editRoleId ? 'Chỉnh sửa vai trò' : 'Thêm vai trò'}</CardTitle>
@@ -163,8 +163,8 @@ export default function RolePage() {
           </form>
         </Card>
         {/* Role List */}
-        <Table className="flex-1 w-full border rounded-md">
-          <TableCaption>User List</TableCaption>
+        <Table className="w-full border rounded-md">
+          <TableCaption>Danh sách vai trò </TableCaption>
           <TableHeader>
             <TableRow>
               <TableCell>Vai trò</TableCell>

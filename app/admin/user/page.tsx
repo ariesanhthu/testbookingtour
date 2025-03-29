@@ -179,11 +179,11 @@ export default function RolePage() {
   };
 
   return (
-    <div className="m-10">
-      <h1>Quản lý người dùng</h1>
-      <div className="flex flex-row gap-10 p-10 mx-20 justify-center">
+    <div className="my-10 flex flex-col justify-center items-center mx-auto">
+      <h1 className='title'>Quản lý người dùng</h1>
+      <div className="flex flex-col lg:flex-row gap-10 p-10 mx-auto justify-center">
         {/* User Form */}
-        <Card className="flex-1 min-w-[30rem]">
+        <Card className="min-w-[30rem]">
           {status && <p style={{ color: 'red'}}>{status}</p>}
           <CardHeader>
             <CardTitle>{editUsername ? 'Chỉnh sửa vai trò' : 'Thêm người dùng'}</CardTitle>
@@ -241,7 +241,7 @@ export default function RolePage() {
           </form>
         </Card>
         {/* User List */}
-        <Table className="flex-1 w-full border rounded-md">
+        <Table className="w-full border rounded-md">
           <TableCaption>Danh sách người dùng</TableCaption>
           <TableHeader>
             <TableRow>
